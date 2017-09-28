@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     ttsPlayer = new talkify.TtsPlayer()
     .enableTextHighlighting();
-    
+
     function enableAllTts () {
       ttsPlaylist = new talkify.playlist()
         .begin()
@@ -22,7 +22,6 @@ $(document).ready(function() {
     }
 
     function disableAllTts () {
-        ttsPlayer = undefined;
         ttsPlaylist = undefined;
     }
 
