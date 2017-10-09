@@ -12,6 +12,10 @@ $(document).ready(function() {
     ttsPlayer = new talkify.TtsPlayer()
     .enableTextHighlighting();
 
+    ttsPlayer.onPlay = function () {
+        console.log("Sentence is ended");
+    }
+
     function enableAllTts () {
       ttsPlaylist = new talkify.playlist()
         .begin()
@@ -22,21 +26,17 @@ $(document).ready(function() {
     }
 
     function disableAllTts () {
-        ttsPlaylist = undefined;
+        ttsPlaylist.disableTextInteraction();
+        ttsPlayer.pause();
     }
 
     $( '#enable_toggle' ).click(function() {
-
         $( ".talkify-audio-control" ).toggle( "slow" );
         if ($(this).is(":checked")) {
-            console.log('Enabled');
             enableAllTts();
         } else {
-            console.log('Disabled');
-            ttsPlaylist.dispose();
-            ttsPlayer.pause();
             disableAllTts();
         }
 
-    });
+    });  
 });
